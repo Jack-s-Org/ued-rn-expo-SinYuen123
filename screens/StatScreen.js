@@ -251,20 +251,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginLeft: -10,
 
-    marginTop: -6,
+    marginTop: 36,
   },
   TodaySet: {
     flexDirection: "column",
     alignItems: "center",
     resizeMode: "contain",
 
-    marginLeft: -280,
+    marginLeft: -265,
   },
 
   ticketBackground: {
     width: 440,
     height: 150,
-    resizeMode: "contain",
+    resizeMode: "cover",
     marginTop: -10,
     marginLeft: 260,
     flexDirection: "row",
@@ -273,8 +273,8 @@ const styles = StyleSheet.create({
   },
   TodaySmallBG: {
     width: 430,
-    height: 260,
-    resizeMode: "contain",
+    height: 250,
+    resizeMode: "cover",
     marginTop: -40,
     marginLeft: 260,
     justifyContent: "space-between",

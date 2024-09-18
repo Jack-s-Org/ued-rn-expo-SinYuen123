@@ -8,7 +8,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { SafeAreaView } from "react-native-safe-area-context";
 import MeScreen from "./MeScreen";
 import DiscoverScreen from "./DiscoverScreen";
-import AppDrawer from "./AppDrawer";
+import CustomTabBar from "@/components/CustomTabBar";
+
 import SettingsScreen from "./SettingsScreen";
 import AddScreen from "./AddScreen";
 import { Image, View, StyleSheet, ImageBackground } from "react-native";
@@ -18,90 +19,74 @@ const Tab = createBottomTabNavigator();
 
 const Empty = () => null;
 
-function CustomTabBarBackground() {
-  return (
-    <ImageBackground
-      source={require("@/assets/image/tryBar.png")} // Your background image
-      style={{ height: "100%" }}
-    />
-  );
-}
-
 const MainTabs = ({ navigation }) => {
   const [unreadCount, setUnreadCount] = useState(3);
   return (
-    <AppDrawer navigation={navigation}>
-      <Tab.Navigator
-        screenOptions={{
-          headerShown: false,
+    <Tab.Navigator
+      tabBar={(props) => <CustomTabBar {...props} />}
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <View style={styles.iconContainer}>
+              {/* Background Image for the Bar */}
 
-          tabBarBackground: () => <CustomTabBarBackground />,
+              {/* Home Icon */}
+              <Image
+                source={require("@/assets/image/homeIcon1.png")}
+                style={[
+                  styles.icon,
+                  { width: 44, height: 44, marginLeft: 20, marginTop: -8 },
+                ]}
+              />
+            </View>
+          ),
+          tabBarLabel: () => null,
         }}
-      >
-        <Tab.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{
-            tabBarIcon: ({ color, size }) => (
-              <View style={styles.iconContainer}>
-                {/* Background Image for the Bar */}
+      />
 
-                {/* Home Icon */}
-                <Image
-                  source={require("@/assets/image/homeIcon1.png")}
-                  style={[
-                    styles.icon,
-                    { width: size * 2, height: size * 2, marginLeft: 50 },
-                  ]}
-                />
-              </View>
-            ),
-            tabBarLabel: () => null,
-          }}
-        />
+      <Tab.Screen
+        name="Inbox"
+        component={StatScreen}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <View style={styles.iconContainer}>
+              {/* Stats Icon */}
+              <Image
+                source={require("@/assets/image/statsIcon1.png")}
+                style={[styles.icon, { width: 44, height: 44, marginTop: -8 }]}
+              />
+            </View>
+          ),
+          tabBarLabel: () => null,
+        }}
+      />
 
-        <Tab.Screen
-          name="Inbox"
-          component={StatScreen}
-          options={{
-            tabBarIcon: ({ color, size }) => (
-              <View style={styles.iconContainer}>
-                <Image
-                  source={require("@/assets/image/tryBar.png")}
-                  style={styles.iconBar}
-                />
-                {/* Stats Icon */}
-                <Image
-                  source={require("@/assets/image/statsIcon1.png")}
-                  style={[styles.icon, { width: size * 2, height: size * 2 }]}
-                />
-              </View>
-            ),
-            tabBarLabel: () => null,
-          }}
-        />
-
-        <Tab.Screen
-          name="SettingsDrawer"
-          component={MeScreen}
-          options={{
-            tabBarIcon: ({ color, size }) => (
-              <View style={styles.iconContainer}>
-                {/* Profile Icon */}
-                <Image
-                  source={require("@/assets/image/ProfileIcon1.png")}
-                  style={[
-                    styles.icon,
-                    { width: size * 1.8, height: size * 1.8, marginRight: 50 },
-                  ]}
-                />
-              </View>
-            ),
-            tabBarLabel: () => null,
-          }}
-        />
-      </Tab.Navigator>
-    </AppDrawer>
+      <Tab.Screen
+        name="SettingsDrawer"
+        component={MeScreen}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <View style={styles.iconContainer}>
+              {/* Profile Icon */}
+              <Image
+                source={require("@/assets/image/ProfileIcon1.png")}
+                style={[
+                  styles.icon,
+                  { width: 44, height: 44, marginRight: 20, marginTop: -8 },
+                ]}
+              />
+            </View>
+          ),
+          tabBarLabel: () => null,
+        }}
+      />
+    </Tab.Navigator>
   );
 };
 const styles = StyleSheet.create({
