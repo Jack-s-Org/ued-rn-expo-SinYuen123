@@ -6,6 +6,11 @@ import Onboarding from "./Onboarding";
 import Onboarding2 from "./Onboarding2";
 import Onboarding3 from "./Onboarding3";
 import PomodoroSetting from "./PomodoroSetting";
+import HarryStudy from "./HarryStudy";
+import End from "./End";
+import ChooseTheme from "./ChooseTheme";
+import ViewAll from "./ViewAll";
+import StatScreen from "./StatScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +27,11 @@ const RootNavigator = () => {
         <Stack.Screen name="SignIn" component={SignInScreen} />
         <Stack.Screen name="Main" component={MainScreens} />
         <Stack.Screen name="PomodoroSetting" component={PomodoroSetting} />
+        <Stack.Screen name="HarryStudy" component={HarryStudy} />
+        <Stack.Screen name="End" component={End} />
+        <Stack.Screen name="ChooseTheme" component={ChooseTheme} />
+        <Stack.Screen name="ViewAll" component={ViewAll} />
+        <Stack.Screen name="StatScreen" component={StatScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -45,7 +45,7 @@ const SignInScreen = ({ navigation }) => {
           <TouchableOpacity
             style={styles.NextButton}
             onPress={() => {
-              navigation.replace("Main");
+              navigation.replace("ChooseTheme");
             }}
           >
             <Text style={styles.Button}>Login</Text>

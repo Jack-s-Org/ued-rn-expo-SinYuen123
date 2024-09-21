@@ -5,10 +5,14 @@ import {
   Image,
   View,
   ScrollView,
+  TouchableOpacity,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useNavigation } from "@react-navigation/native";
 
 const StatScreen = () => {
+  const navigation = useNavigation();
+
   return (
     <ImageBackground
       source={require("@/assets/image/statsBackground.png")}
@@ -21,8 +25,20 @@ const StatScreen = () => {
           source={require("@/assets/image/MoodRecord.png")}
           style={styles.image} // Add style to control image size and position
         />
-        <Text style={[styles.font, { marginTop: 14 }]}>Monthly View</Text>
+        <Text style={[styles.font, { marginTop: 14 }]}>Monthly View </Text>
 
+        <View>
+          <TouchableOpacity
+            style={styles.NextButton}
+            onPress={() => navigation.navigate("ViewAll")}
+          >
+            <Text
+              style={[styles.fontView, { marginTop: -22, marginLeft: 295 }]}
+            >
+              View All
+            </Text>
+          </TouchableOpacity>
+        </View>
         <ImageBackground
           source={require("@/assets/image/MonthlyView.png")}
           style={styles.monthlyView}
@@ -176,6 +192,11 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 20,
   },
+  fontView: {
+    fontFamily: "FuturaPTDemi",
+    color: "white",
+    fontSize: 16,
+  },
   font16: {
     fontFamily: "FuturaPTDemi",
     color: "white",
@@ -241,7 +262,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginLeft: -3,
-    marginTop: 35,
+    marginTop: -45,
   },
   TodayPanel: {
     width: 100,

@@ -4,18 +4,56 @@ import {
   Text,
   Image,
   View,
-  ScrollView,
+  TouchableOpacity,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const StatScreen = () => {
+const PomodoroSetting = ({ navigation }) => {
   return (
     <ImageBackground
       source={require("@/assets/image/statsBackground.png")}
       style={StyleSheet.absoluteFill}
       resizeMode="cover"
     >
-      <SafeAreaView style={styles.container}></SafeAreaView>
+      <ImageBackground
+        source={require("@/assets/image/what.png")}
+        style={styles.what}
+      >
+        <Text style={[styles.font_20, { marginLeft: 170 }]}>What do you</Text>
+        <Text style={[styles.font_20, { marginTop: 5 }]}>
+          like to focus on now?
+        </Text>
+        <Text style={[styles.font_20, { marginTop: 5, marginLeft: 190 }]}>
+          Drawing
+        </Text>
+      </ImageBackground>
+
+      <ImageBackground
+        source={require("@/assets/image/Set.png")}
+        style={styles.set}
+      >
+        <Text style={[styles.font_20, { marginTop: 55, marginLeft: 170 }]}>
+          Set a timer
+        </Text>
+        <Text style={[styles.font_16, { marginTop: 3, marginLeft: 184 }]}>
+          Focus for
+        </Text>
+        <Text style={[styles.font_20, { marginTop: 5, marginLeft: 172 }]}>
+          00 H 00M
+        </Text>
+      </ImageBackground>
+
+      <TouchableOpacity
+        style={styles.back}
+        onPress={() => {
+          navigation.replace("Main");
+        }}
+      >
+        <Image
+          source={require("@/assets/image/back.png")}
+          style={styles.back}
+        />
+      </TouchableOpacity>
 
       <ImageBackground
         source={require("@/assets/image/TodayBackground.png")}
@@ -23,13 +61,39 @@ const StatScreen = () => {
       >
         <ImageBackground
           source={require("@/assets/image/hpFly.png")}
-          style={styles.image} // Add style to control image size and position
+          style={styles.image}
         />
         <View>
-          <Text style={[styles.font20, { marginTop: -130 }]}>
+          <Text style={[styles.font20, { marginTop: -150 }]}>
             Pomodoro Setting
           </Text>
         </View>
+        <Image
+          source={require("@/assets/image/PomoWork.png")}
+          style={styles.work}
+        />
+        <Image
+          source={require("@/assets/image/PomoShort.png")}
+          style={styles.short}
+        />
+        <Image
+          source={require("@/assets/image/PomoSection.png")}
+          style={styles.short}
+        />
+
+        <TouchableOpacity
+          style={styles.NextButton}
+          onPress={() => {
+            navigation.replace("HarryStudy");
+          }}
+        >
+          <ImageBackground
+            source={require("@/assets/image/NextButton.png")}
+            style={styles.NextButton}
+          >
+            <Text style={styles.Button}>Start</Text>
+          </ImageBackground>
+        </TouchableOpacity>
       </ImageBackground>
     </ImageBackground>
   );
@@ -49,60 +113,29 @@ const styles = StyleSheet.create({
     fontFamily: "FuturaPTDemi",
     color: "white",
     fontSize: 20,
-    marginTop: -80,
+    marginTop: 0,
     marginLeft: -160,
   },
-  font16Black: {
+  font_20: {
     fontFamily: "FuturaPTDemi",
-    color: "black",
+    color: "white",
+    fontSize: 20,
+    marginTop: 70,
+    marginLeft: 140,
+  },
+  font_16: {
+    fontFamily: "FuturaPTDemi",
+    color: "white",
     fontSize: 16,
-    textAlign: "left",
+    marginTop: 70,
+    marginLeft: 140,
   },
   image: {
     width: 380,
     height: 560,
-    marginTop: -600,
-    marginLeft: -160,
+    marginTop: -360,
+    marginLeft: -180,
     resizeMode: "contain",
-  },
-  monthlyView: {
-    marginLeft: -8,
-    width: "100%",
-    height: 140,
-    resizeMode: "contain",
-  },
-  monthlySet: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "98%",
-    paddingHorizontal: 8,
-  },
-  monthlyCard: {
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "space-between",
-    width: "10%",
-    height: 100,
-    marginHorizontal: 2,
-    marginTop: 14,
-    marginLeft: 6,
-  },
-  cardImage: {
-    width: 80,
-    height: 80,
-    resizeMode: "contain",
-    marginLeft: 8,
-    marginTop: -20,
-  },
-  MonthlyDay: {
-    fontFamily: "FuturaPTBold",
-    color: "black",
-    fontSize: 14,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 6,
   },
   TodayBackground: {
     width: 400,
@@ -112,80 +145,49 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginLeft: -3,
-    marginTop: -55,
+    marginTop: 145,
   },
-  TodayPanel: {
-    width: 100,
-    height: 50,
-    resizeMode: "contain",
-    justifyContent: "center",
-    alignItems: "center",
-    marginLeft: -10,
-
-    marginTop: 36,
+  work: {
+    width: 350,
+    height: 105,
+    marginTop: -130,
   },
-  TodaySet: {
-    flexDirection: "column",
-    alignItems: "center",
-    resizeMode: "contain",
-
-    marginLeft: -265,
-  },
-
-  ticketBackground: {
-    width: 440,
-    height: 150,
-    resizeMode: "cover",
-    marginTop: -10,
-    marginLeft: 260,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "flex-start",
-  },
-  TodaySmallBG: {
-    width: 430,
-    height: 250,
-    resizeMode: "cover",
-    marginTop: -40,
-    marginLeft: 260,
-    justifyContent: "space-between",
-  },
-  smile: {
-    width: 80,
-    height: 80,
-    resizeMode: "contain",
-    marginLeft: 50, // Remove margin to keep it at the left
+  short: {
+    width: 350,
+    height: 105,
     marginTop: -30,
   },
-  smileContainer: {
-    flexDirection: "column",
-    alignItems: "left",
-    justifyContent: "space-between",
-    marginTop: 30,
+  what: {
+    width: 390,
+    height: 265,
+    marginTop: 40,
   },
-  todaySmallBg: {
-    width: 440,
-    height: 300,
-    resizeMode: "contain",
-    border: 20,
-    borderColor: "black",
-    marginLeft: 260,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "flex-start",
+  set: {
+    width: 370,
+    height: 255,
+    marginTop: -70,
+    marginLeft: 60,
   },
-  scrollView: {
-    width: "100%",
-    height: "100%",
+  back: {
+    width: 46,
+    height: 45,
+    marginTop: -210,
+    marginLeft: 10,
   },
-  line: {
-    width: 4,
-    height: 80,
-    alignItems: "left",
-    justifyContent: "space-between",
-    marginLeft: -95,
-    marginTop: -35,
+  NextButton: {
+    width: 120,
+    height: 50,
+    resizeMode: "cover",
+    flex: 1,
+    marginTop: -8,
+  },
+  Button: {
+    color: "white",
+    fontFamily: "FuturaPTDemi",
+    fontSize: 18,
+    marginTop: 14,
+    marginLeft: 40,
   },
 });
 
-export default StatScreen;
+export default PomodoroSetting;
