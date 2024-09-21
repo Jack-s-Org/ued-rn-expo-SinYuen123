@@ -11,6 +11,7 @@ import End from "./End";
 import ChooseTheme from "./ChooseTheme";
 import ViewAll from "./ViewAll";
 import StatScreen from "./StatScreen";
+import ModeSetting from "./ModeSetting";
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +33,7 @@ const RootNavigator = () => {
         <Stack.Screen name="ChooseTheme" component={ChooseTheme} />
         <Stack.Screen name="ViewAll" component={ViewAll} />
         <Stack.Screen name="StatScreen" component={StatScreen} />
+        <Stack.Screen name="ModeSetting" component={ModeSetting} />
       </Stack.Navigator>
     </NavigationContainer>
   );

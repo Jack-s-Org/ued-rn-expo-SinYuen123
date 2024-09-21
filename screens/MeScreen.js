@@ -1,195 +1,43 @@
-import { ImageBackground, StyleSheet, Text, Image, View } from "react-native";
+import React, { useState } from "react";
+import {
+  ImageBackground,
+  StyleSheet,
+  Text,
+  Image,
+  View,
+  TouchableOpacity,
+  Alert,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-
-// const MeScreen = () => {
-//   return (
-//     <ImageBackground
-//       source={require("@/assets/image/statsBackground.png")}
-//       style={StyleSheet.absoluteFill}
-//       resizeMode="cover"
-//     >
-//       <SafeAreaView style={styles.container}>
-//         <View>
-//           <ImageBackground
-//             source={require("@/assets/image/HarryProfile.png")}
-//             style={styles.profile}
-//           ></ImageBackground>
-//         </View>
-
-//         <Text style={[styles.font, { marginTop: -50 }]}>Harry</Text>
-
-//         {/* <ImageBackground
-//           source={require("@/assets/image/supportBg.png")}
-//           style={styles.supportBg}
-//         ></ImageBackground> */}
-
-//         {/* <ImageBackground
-//           source={require("@/assets/image/profileBar.png")}
-//           style={styles.profileBar}
-//         ></ImageBackground> */}
-//       </SafeAreaView>
-
-//       <ImageBackground
-//         source={require("@/assets/image/TodayBackground.png")}
-//         style={styles.TodayBackground}
-//       >
-//         <View style={styles.TodaySet}>
-//           <ImageBackground
-//             source={require("@/assets/image/TodayPanel.png")}
-//             style={styles.TodayPanel}
-//           >
-//             <Text style={styles.font16}>Today</Text>
-//           </ImageBackground>
-//           <Text style={styles.font16Black}>17 Jun 2024</Text>
-
-//           <ImageBackground
-//             source={require("@/assets/image/ticketBackground.png")}
-//             style={styles.ticketBackground}
-//           >
-//             <Image
-//               source={require("@/assets/image/smile.png")}
-//               style={styles.smile}
-//             />
-//             <View style={[{ marginTop: -30 }]}>
-//               <Text style={styles.font16Black}>6:44PM</Text>
-//               <Text style={styles.font16Black}>You noticed your emotion.</Text>
-//             </View>
-//           </ImageBackground>
-
-//           <ImageBackground
-//             source={require("@/assets/image/TodaySmallBG.png")}
-//             style={[styles.todaySmallBg, { marginTop: -60 }]}
-//           >
-//             <Image
-//               source={require("@/assets/image/smile.png")}
-//               style={[styles.smile, { marginTop: -170 }]}
-//             />
-//             <View style={[{ marginTop: -170 }]}>
-//               <Text style={styles.font16Black}>9:24PM</Text>
-//               <Text style={styles.font16Black}>Focus.</Text>
-//             </View>
-//             <Image
-//               source={require("@/assets/image/Line.png")}
-//               style={styles.line}
-//             />
-
-//             <Image
-//               source={require("@/assets/image/smile.png")}
-//               style={[styles.smile, { marginTop: 110, marginLeft: -40 }]}
-//             />
-//             <View style={[{ marginTop: 110 }]}>
-//               <Text style={styles.font16Black}>9:24PM</Text>
-//               <Text style={styles.font16Black}>
-//                 Harry spent two hours drawing.
-//               </Text>
-//             </View>
-//           </ImageBackground>
-
-//           <ImageBackground
-//             source={require("@/assets/image/ticketBackground.png")}
-//             style={[styles.ticketBackground, { marginTop: -60 }]}
-//           >
-//             <Image
-//               source={require("@/assets/image/smile.png")}
-//               style={styles.smile}
-//             />
-//             <View style={[{ marginTop: -30 }]}>
-//               <Text style={styles.font16Black}>9:44PM</Text>
-//               <Text style={styles.font16Black}>Rest.</Text>
-//             </View>
-//           </ImageBackground>
-//         </View>
-//       </ImageBackground>
-//     </ImageBackground>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   background: {
-//     flex: 1, // Ensures the background fills the entire screen
-//   },
-//   container: {
-//     alignItems: "center",
-//     paddingLeft: 12,
-//   },
-//   profileContainer: {
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-//   profile: {
-//     width: 160,
-//     height: 180,
-//     resizeMode: "contain",
-//   },
-//   nameText: {
-//     marginTop: 10,
-//     fontSize: 20,
-//     color: "white",
-//   },
-//   font: {
-//     fontFamily: "FuturaPTBold",
-//     color: "white",
-//     fontSize: 20,
-//   },
-//   smallBg: {
-//     // width: "98%",
-//     // height: 110,
-//     // resizeMode: "cover",
-//     // marginTop: 50,
-//     width: "98%",
-//     height: 110,
-//     resizeMode: "contain",
-//     marginTop: 20,
-//     flexDirection: "row",
-//     alignItems: "center",
-//     justifyContent: "flex-start",
-//   },
-//   supportBg: {
-//     width: "98%",
-//     height: 80,
-
-//     marginTop: 50,
-//   },
-//   profileBar: {
-//     width: 30,
-//     height: 420,
-//     marginTop: 70,
-//     marginLeft: 1,
-//   },
-//   font16: {
-//     fontFamily: "FuturaPTDemi",
-//     color: "white",
-//     fontSize: 16,
-//     textAlign: "center",
-//   },
-//   font16Black: {
-//     fontFamily: "FuturaPTDemi",
-//     color: "black",
-//     fontSize: 16,
-//     textAlign: "left",
-//   },
-//   ticketBackground: {
-//     width: 440,
-//     height: 150,
-//     resizeMode: "cover",
-//     marginTop: -10,
-//     marginLeft: 260,
-//     flexDirection: "row",
-//     alignItems: "center",
-//     justifyContent: "flex-start",
-//   },
-//   smile: {
-//     width: 80,
-//     height: 80,
-//     resizeMode: "contain",
-//     marginLeft: 50, // Remove margin to keep it at the left
-//     marginTop: -30,
-//   },
-// });
-
-// export default MeScreen;
+import * as ImagePicker from "expo-image-picker";
 
 const MeScreen = () => {
+  const [profileImage, setProfileImage] = useState(null);
+
+  const pickImage = async () => {
+    // Request permission to access the gallery
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (status !== "granted") {
+      Alert.alert(
+        "Permission required",
+        "Sorry, we need camera roll permissions to make this work!"
+      );
+      return;
+    }
+
+    // Open the image picker
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      setProfileImage(result.assets[0].uri);
+    }
+  };
+
   return (
     <ImageBackground
       source={require("@/assets/image/statsBackground.png")}
@@ -197,10 +45,16 @@ const MeScreen = () => {
       resizeMode="cover"
     >
       <View style={[styles.profileContainer, { marginTop: 20 }]}>
-        <ImageBackground
-          source={require("@/assets/image/HarryProfile.png")}
-          style={styles.profile}
-        ></ImageBackground>
+        <TouchableOpacity onPress={pickImage}>
+          <ImageBackground
+            source={
+              profileImage
+                ? { uri: profileImage }
+                : require("@/assets/image/HarryProfile.png")
+            }
+            style={styles.profile}
+          ></ImageBackground>
+        </TouchableOpacity>
       </View>
       <View style={styles.TodaySet}>
         <ImageBackground
@@ -248,7 +102,7 @@ const MeScreen = () => {
           source={require("@/assets/image/supportBg.png")}
           style={[styles.supportBg, { marginTop: 18 }]}
         >
-          <View style={[{ marginLeft: -178 }]}>
+          <View style={[{ marginLeft: -158 }]}>
             <Text style={styles.font20Black}>Privacy & terms</Text>
           </View>
           <View style={[{ marginRight: 20 }]}>

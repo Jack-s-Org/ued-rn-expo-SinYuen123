@@ -88,16 +88,16 @@ const StatScreen = () => {
             </View>
             <View style={styles.monthlyCard}>
               <Text style={styles.MonthlyDay}>Sat</Text>
-              <Image
-                source={require("@/assets/image/MonthlyCard.png")}
-                style={styles.cardImage}
+              <ImageBackground
+                source={require("@/assets/image/Sat1.png")}
+                style={styles.cardImage2}
               />
             </View>
             <View style={styles.monthlyCard}>
               <Text style={styles.MonthlyDay}>Sun</Text>
               <Image
-                source={require("@/assets/image/MonthlyCard.png")}
-                style={styles.cardImage}
+                source={require("@/assets/image/Sun2.png")}
+                style={styles.cardImage2}
               />
             </View>
           </View>
@@ -245,6 +245,13 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     marginLeft: 8,
     marginTop: -20,
+  },
+  cardImage2: {
+    width: 82,
+    height: 82,
+    resizeMode: "contain",
+    marginLeft: 8,
+    marginTop: -2,
   },
   MonthlyDay: {
     fontFamily: "FuturaPTBold",

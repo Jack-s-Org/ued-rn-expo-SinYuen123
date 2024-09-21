@@ -75,10 +75,12 @@ const HomeScreen = ({ navigation }) => {
           source={require("@/assets/image/work.png")}
           style={styles.work}
         />
-        <Image
-          source={require("@/assets/image/studyCard.png")}
-          style={styles.Study}
-        />
+        <TouchableOpacity onPress={() => navigation.navigate("ModeSetting")}>
+          <Image
+            source={require("@/assets/image/studyCard.png")}
+            style={styles.Study}
+          />
+        </TouchableOpacity>
         <Image
           source={require("@/assets/image/Rest.png")}
           style={styles.work}
